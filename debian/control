@@ -1,0 +1,12 @@
+Source: ros-hydro-interactive-world-tools
+Section: misc
+Priority: extra
+Maintainer: Russell Toris <rctoris@wpi.edu>
+Build-Depends: debhelper (>= 9.0.0), libcurl4-openssl-dev, libjsoncpp-dev, ros-hydro-catkin, ros-hydro-geometry-msgs, ros-hydro-interactive-world-msgs, ros-hydro-roscpp
+Homepage: http://ros.org/wiki/interactive_world_tools
+Standards-Version: 3.9.2
+
+Package: ros-hydro-interactive-world-tools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libcurl4-openssl-dev, libjsoncpp-dev, ros-hydro-geometry-msgs, ros-hydro-interactive-world-msgs, ros-hydro-roscpp
+Description: Tools and Modules for the Interactive World Models
