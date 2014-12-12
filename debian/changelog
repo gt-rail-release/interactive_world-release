@@ -1,0 +1,11 @@
+ros-hydro-interactive-world (0.0.1-0precise) precise; urgency=high
+
+  * travis fix
+  * changelog updated
+  * load models added
+  * first pass of new parser
+  * Contributors: Russell Toris
+
+ -- Russell Toris <rctoris@wpi.edu>  Fri, 12 Dec 2014 05:00:00 -0000
+
+

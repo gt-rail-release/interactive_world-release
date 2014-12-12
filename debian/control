@@ -1,0 +1,12 @@
+Source: ros-hydro-interactive-world
+Section: misc
+Priority: extra
+Maintainer: Russell Toris <rctoris@wpi.edu>
+Build-Depends: debhelper (>= 9.0.0), ros-hydro-catkin
+Homepage: http://ros.org/wiki/interactive_world
+Standards-Version: 3.9.2
+
+Package: ros-hydro-interactive-world
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-hydro-interactive-world-msgs, ros-hydro-interactive-world-parser, ros-hydro-interactive-world-tools, ros-hydro-jinteractiveworld
+Description: Metapackage for the Interactive World
