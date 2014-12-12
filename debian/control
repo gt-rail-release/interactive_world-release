@@ -1,0 +1,12 @@
+Source: ros-hydro-interactive-world-parser
+Section: misc
+Priority: extra
+Maintainer: Russell Toris <rctoris@wpi.edu>
+Build-Depends: debhelper (>= 9.0.0), libjsoncpp-dev, ros-hydro-catkin, ros-hydro-interactive-world-msgs, ros-hydro-librms, ros-hydro-roscpp, ros-hydro-std-srvs, ros-hydro-tf2
+Homepage: http://ros.org/wiki/interactive_world_parser
+Standards-Version: 3.9.2
+
+Package: ros-hydro-interactive-world-parser
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libjsoncpp-dev, ros-hydro-interactive-world-msgs, ros-hydro-jinteractiveworld, ros-hydro-librms, ros-hydro-rosbridge-server, ros-hydro-roscpp, ros-hydro-std-srvs, ros-hydro-tf2
+Description: The Main Parser for the Interactive World Database
