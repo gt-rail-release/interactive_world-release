@@ -1,0 +1,12 @@
+Source: ros-hydro-interactive-world-msgs
+Section: misc
+Priority: extra
+Maintainer: Russell Toris <rctoris@wpi.edu>
+Build-Depends: debhelper (>= 9.0.0), ros-hydro-actionlib-msgs, ros-hydro-catkin, ros-hydro-geometry-msgs, ros-hydro-message-generation
+Homepage: http://ros.org/wiki/interactive_world_msgs
+Standards-Version: 3.9.2
+
+Package: ros-hydro-interactive-world-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-hydro-actionlib-msgs, ros-hydro-geometry-msgs, ros-hydro-message-runtime, ros-hydro-tf
+Description: Messages Used within the Interactive World
