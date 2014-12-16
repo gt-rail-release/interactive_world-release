@@ -3,6 +3,7 @@ package edu.wpi.rail.jinteractiveworld.model;
 import edu.wpi.rail.jinteractiveworld.data.*;
 import edu.wpi.rail.jinteractiveworld.ros.msgs.interactiveworldmsgs.*;
 import edu.wpi.rail.jrosbridge.messages.geometry.Point;
+import org.ejml.simple.SimpleMatrix;
 import weka.clusterers.EM;
 import weka.core.*;
 import weka.core.Instances;
@@ -22,10 +23,15 @@ import java.util.List;
  */
 public class EMModel implements Model {
 
+	public enum RankingFunction {
+		CUSTOM, SCATTER_SEPARABILITY
+	}
+
 	private EM em;
 	private Placement best;
 	private double decisionValue, sigmaX, sigmaY, sigmaZ, sigmaTheta;
 	private DataSet data;
+	private RankingFunction rankingType;
 
 	/**
 	 * Create a clustering model based on the given data set. This model will be
@@ -34,8 +40,10 @@ public class EMModel implements Model {
 	 * @param data
 	 *            The data set for the model.
 	 */
-	public EMModel(DataSet data) {
+	public EMModel(DataSet data, RankingFunction rankingType) {
 		this.data = data;
+		this.rankingType = rankingType;
+		this.decisionValue = Double.POSITIVE_INFINITY;
 		this.train();
 	}
 
@@ -141,64 +149,126 @@ public class EMModel implements Model {
 
 			// run EM
 			this.em.buildClusterer(newInstances);
-
 			// get the results
 			double clusterData[][][] = this.em.getClusterModelsNumericAtts();
+			double[] priors = this.em.clusterPriors();
 
-			// cluster each point
-			@SuppressWarnings("unchecked")
-			ArrayList<Instance>[] clusters = (ArrayList<Instance>[]) new ArrayList[clusterData.length];
-			for (int i = 0; i < clusters.length; i++) {
-				clusters[i] = new ArrayList<Instance>();
-			}
-			for (int i = 0; i < newInstances.numInstances(); i++) {
-				Instance inst = newInstances.instance(i);
-				int clust = this.em.clusterInstance(inst);
-				clusters[clust].add(inst);
-			}
 
-			// determine the densest cluster
-			for (int m = 0; m < clusters.length; m++) {
-				ArrayList<Instance> curInsts = clusters[m];
-				double distance = 0;
-				for (int i = 0; i < curInsts.size(); i++) {
-					Instance instI = curInsts.get(i);
-					for (int j = 0; j < curInsts.size(); j++) {
-						if (i != j) {
-							Instance instJ = curInsts.get(j);
-							// get each attribute
-							double sum = 0;
-							for (int k = 0; k < instI.numAttributes(); k++) {
-								sum += Math.pow(
-										instI.value(k) - instJ.value(k), 2.0);
+			if (this.rankingType.equals(RankingFunction.CUSTOM)) {
+
+				// cluster each point
+				@SuppressWarnings("unchecked")
+				ArrayList<Instance>[] clusters = (ArrayList<Instance>[]) new ArrayList[clusterData.length];
+				for (int i = 0; i < clusters.length; i++) {
+					clusters[i] = new ArrayList<Instance>();
+				}
+				for (int i = 0; i < newInstances.numInstances(); i++) {
+					Instance inst = newInstances.instance(i);
+					int clust = this.em.clusterInstance(inst);
+					clusters[clust].add(inst);
+				}
+
+				// rank the clusters
+				for (int m = 0; m < clusters.length; m++) {
+					double distance = 0;
+					ArrayList<Instance> curInstances = clusters[m];
+					for (int i = 0; i < curInstances.size(); i++) {
+						Instance instI = curInstances.get(i);
+						for (int j = 0; j < curInstances.size(); j++) {
+							if (i != j) {
+								Instance instJ = curInstances.get(j);
+								// get each attribute
+								double sum = 0;
+								for (int k = 0; k < instI.numAttributes(); k++) {
+									sum += Math.pow(
+											instI.value(k) - instJ.value(k), 2.0);
+								}
+								// get the distance
+								distance += Math.sqrt(sum);
 							}
-							// get the distance
-							distance += Math.sqrt(sum);
 						}
 					}
-				}
-				// average
-				double density = distance
-						/ (curInsts.size() * (curInsts.size() - 1)) * 1.0
-						/ (((double) curInsts.size()) / ((double) this.size()));
+					// average
+					double ranking = distance
+							/ (curInstances.size() * (curInstances.size() - 1)) * 1.0
+							/ (((double) curInstances.size()) / ((double) this.size()));
 
-				// check for a new best
-				if (density < this.decisionValue) {
-					this.decisionValue = density;
-					double x = clusterData[m][0][0];
-					this.sigmaX = clusterData[m][0][1];
-					double y = clusterData[m][1][0];
-					this.sigmaY = clusterData[m][1][1];
-					double z = 0.0;
-					this.sigmaZ = 0.0;
-					double theta = clusterData[m][2][0];
-					this.sigmaTheta = clusterData[m][2][1];
-					this.best = new Placement(this.getItem(), this.getRoom(), this.getSurface(), this.getReferenceFrame(), new Point(x, y, z), theta);
+					// check for a new best
+					if (ranking < this.decisionValue) {
+						this.decisionValue = ranking;
+						double x = clusterData[m][0][0];
+						this.sigmaX = clusterData[m][0][1];
+						double y = clusterData[m][1][0];
+						this.sigmaY = clusterData[m][1][1];
+						double z = 0.0;
+						this.sigmaZ = 0.0;
+						double theta = clusterData[m][2][0];
+						this.sigmaTheta = clusterData[m][2][1];
+						this.best = new Placement(this.getItem(), this.getRoom(), this.getSurface(), this.getReferenceFrame(), new Point(x, y, z), theta);
+					}
 				}
+			} else if (this.rankingType.equals(RankingFunction.SCATTER_SEPARABILITY)) {
+				int n = newInstances.numAttributes();
+				// priors
+//				SimpleMatrix sw = new SimpleMatrix(n, n);
+//				SimpleMatrix mo = new SimpleMatrix(n, 1);
+//				SimpleMatrix sb = new SimpleMatrix(n, n);
+
+				// go through each cluster for sw and mo
+				for (int i = 0; i < clusterData.length; i++) {
+					// covariance matrix
+					double[][] covArray = new double[n][n];
+					// mu for the cluster
+//					double [][] muArray = new double[n][1];
+					for (int j = 0; j < n; j++) {
+						covArray[j][j] = clusterData[i][j][1];
+//						muArray[j][0] = clusterData[i][j][0];
+					}
+					SimpleMatrix cov = new SimpleMatrix(covArray);
+					SimpleMatrix covScale = cov.scale(priors[i]);
+					double trace = covScale.trace();
+					if (trace < this.decisionValue) {
+						this.decisionValue = trace;
+						double x = clusterData[i][0][0];
+						this.sigmaX = clusterData[i][0][1];
+						double y = clusterData[i][1][0];
+						this.sigmaY = clusterData[i][1][1];
+						double z = 0.0;
+						this.sigmaZ = 0.0;
+						double theta = clusterData[i][2][0];
+						this.sigmaTheta = clusterData[i][2][1];
+						this.best = new Placement(this.getItem(), this.getRoom(), this.getSurface(), this.getReferenceFrame(), new Point(x, y, z), theta);
+					}
+//					SimpleMatrix mu = new SimpleMatrix(muArray);
+//					SimpleMatrix muScale = mu.scale(priors[i]);
+//					mo = mo.plus(muScale);
+				}
+
+//				// go through each cluster for sb
+//				for (int i = 0; i < clusterData.length; i++) {
+//					// mu for the cluster
+//					double [][] muArray = new double[n][1];
+//					for (int j = 0; j < n; j++) {
+//						muArray[j][0] = clusterData[i][j][0];
+//					}
+//					SimpleMatrix mu = new SimpleMatrix(muArray);
+//					SimpleMatrix meanDiff = mu.minus(mo);
+//					SimpleMatrix meanDiffTrans = meanDiff.transpose();
+//					SimpleMatrix product = meanDiff.mult(meanDiffTrans);
+//					SimpleMatrix scale = product.scale(priors[i]);
+//					sb = sb.plus(scale);
+//				}
+
+				// trace as the value
+//				this.decisionValue = sw.invert().mult(sb).trace();
+				//this.decisionValue = sw.trace();
+				System.out.println(this.decisionValue); // + " -- " + sw.invert().trace());
 			}
+
 		} catch (Exception e) {
 			System.err.println("[ERROR]: Could not train model: "
 					+ e.getMessage());
+			e.printStackTrace();
 		}
 	}
 
