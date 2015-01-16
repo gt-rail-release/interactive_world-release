@@ -1,0 +1,12 @@
+Source: ros-indigo-spatial-world-model
+Section: misc
+Priority: extra
+Maintainer: Russell Toris <rctoris@wpi.edu>
+Build-Depends: debhelper (>= 9.0.0), libmysqlclient-dev, ros-indigo-catkin, ros-indigo-interactive-world-msgs, ros-indigo-roscpp
+Homepage: http://ros.org/wiki/spatial_world_model
+Standards-Version: 3.9.2
+
+Package: ros-indigo-spatial-world-model
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libmysqlclient-dev, ros-indigo-interactive-world-msgs, ros-indigo-roscpp
+Description: Spatial World Model for Object Tracking
