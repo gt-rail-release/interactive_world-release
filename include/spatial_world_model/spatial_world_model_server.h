@@ -1,5 +1,5 @@
-#ifndef SPATIAL_WORLD_MODEL_SERVER_HPP_
-#define SPATIAL_WORLD_MODEL_SERVER_HPP_
+#ifndef SPATIAL_WORLD_MODEL_TRACKER_H_
+#define SPATIAL_WORLD_MODEL_TRACKER_H_
 
 #include <mysql/mysql.h>
 #include <ros/ros.h>
@@ -19,14 +19,9 @@
 
 #define SWM_CREATE_TABLE "CREATE TABLE IF NOT EXISTS `swms` \
                          (`id` int(10) unsigned NOT NULL AUTO_INCREMENT, \
-                          `room` varchar(255) NOT NULL, \
-                          `room_frame_id` varchar(255) NOT NULL, \
-                          `room_conf` double NOT NULL, \
                           `surface` varchar(255) NOT NULL, \
-                          `surface_frame_id` varchar(255) NOT NULL, \
-                          `surface_conf` double NOT NULL, \
+                          `placement_surface_frame_id` varchar(255) NOT NULL, \
                           `item` varchar(255) NOT NULL, \
-                          `item_frame_id` varchar(255) NOT NULL, \
                           `item_conf` double NOT NULL, \
                           `x` double NOT NULL, \
                           `y` double NOT NULL, \
