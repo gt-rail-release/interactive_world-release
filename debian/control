@@ -1,0 +1,12 @@
+Source: ros-indigo-interactive-world-parser
+Section: misc
+Priority: extra
+Maintainer: Russell Toris <rctoris@wpi.edu>
+Build-Depends: debhelper (>= 9.0.0), libjsoncpp-dev, ros-indigo-catkin, ros-indigo-interactive-world-msgs, ros-indigo-librms, ros-indigo-roscpp, ros-indigo-tf2
+Homepage: http://ros.org/wiki/interactive_world_parser
+Standards-Version: 3.9.2
+
+Package: ros-indigo-interactive-world-parser
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libjsoncpp-dev, ros-indigo-interactive-world-msgs, ros-indigo-jinteractiveworld, ros-indigo-librms, ros-indigo-rosbridge-server, ros-indigo-roscpp, ros-indigo-tf2
+Description: The Main Parser for the Interactive World Database
