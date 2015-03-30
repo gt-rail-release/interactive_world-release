@@ -1,6 +1,6 @@
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Changelog for package interactive_world_tools
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Changelog for package informed_object_search
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 0.0.6 (2015-03-30)
 ------------------
@@ -22,7 +22,3 @@ Changelog for package interactive_world_tools
 
 0.0.1 (2014-12-12)
 ------------------
-* travis fix
-* changelog updated
-* load models added
-* Contributors: Russell Toris
