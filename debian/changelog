@@ -1,0 +1,54 @@
+ros-indigo-spatial-world-model (0.0.8-0trusty) trusty; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Fri, 03 Apr 2015 04:00:00 -0000
+
+ros-indigo-spatial-world-model (0.0.7-0trusty) trusty; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Tue, 31 Mar 2015 04:00:00 -0000
+
+ros-indigo-spatial-world-model (0.0.6-0trusty) trusty; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Mon, 30 Mar 2015 04:00:00 -0000
+
+ros-indigo-spatial-world-model (0.0.5-0trusty) trusty; urgency=high
+
+  * missing msg dep added
+  * Contributors: Russell Toris
+
+ -- Russell Toris <rctoris@wpi.edu>  Wed, 18 Feb 2015 05:00:00 -0000
+
+ros-indigo-spatial-world-model (0.0.4-0trusty) trusty; urgency=high
+
+  * missing package added as dep and updates to marker numbers
+  * marker size increased
+  * tracker node started
+  * Contributors: Russell Toris
+
+ -- Russell Toris <rctoris@wpi.edu>  Tue, 17 Feb 2015 05:00:00 -0000
+
+ros-indigo-spatial-world-model (0.0.3-0trusty) trusty; urgency=high
+
+  * spatial world model added
+  * Contributors: Russell Toris
+
+ -- Russell Toris <rctoris@wpi.edu>  Fri, 16 Jan 2015 05:00:00 -0000
+
+ros-indigo-spatial-world-model (0.0.2-0trusty) trusty; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Tue, 16 Dec 2014 05:00:00 -0000
+
+ros-indigo-spatial-world-model (0.0.1-0trusty) trusty; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Fri, 12 Dec 2014 05:00:00 -0000
+
+
