@@ -1,0 +1,12 @@
+Source: ros-indigo-jinteractiveworld
+Section: misc
+Priority: extra
+Maintainer: Russell Toris <rctoris@wpi.edu>
+Build-Depends: debhelper (>= 9.0.0), default-jdk, maven, ros-indigo-catkin
+Homepage: http://ros.org/wiki/jinteractiveworld
+Standards-Version: 3.9.2
+
+Package: ros-indigo-jinteractiveworld
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, default-jdk, ros-indigo-rosbridge-server
+Description: ROS Wrapper Package for the Java Interactive World Learner
