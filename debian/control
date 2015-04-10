@@ -1,0 +1,12 @@
+Source: ros-indigo-informed-object-search
+Section: misc
+Priority: extra
+Maintainer: Russell Toris <rctoris@wpi.edu>
+Build-Depends: debhelper (>= 9.0.0), libboost-all-dev, ros-indigo-actionlib, ros-indigo-catkin, ros-indigo-interactive-world-msgs, ros-indigo-roscpp
+Homepage: http://ros.org/wiki/search_and_retrieve
+Standards-Version: 3.9.2
+
+Package: ros-indigo-informed-object-search
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libboost-all-dev, ros-indigo-actionlib, ros-indigo-interactive-world-msgs, ros-indigo-interactive-world-tools, ros-indigo-roscpp
+Description: Object Search via the Interactive World Data
