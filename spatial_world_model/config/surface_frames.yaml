@@ -1,0 +1,20 @@
+- name: "kitchen table"
+  frame: "kitchen_table_link"
+  width: 0.88
+  height: 0.90
+  placement_surfaces:
+    - frame: "kitchen_table_surface_link"
+  pois:
+    - name: "chair"
+      frame: "kitchen_chair_link"
+- name: "kitchen counter"
+  frame: "kitchen_counter_link"
+  width: 2.455
+  height: 0.645
+  placement_surfaces:
+    - frame: "kitchen_counter_right_surface_link"
+    - frame: "kitchen_counter_left_surface_link"
+    - frame: "sink_link"
+  pois:
+    - name: "sink"
+      frame: "sink_link"
