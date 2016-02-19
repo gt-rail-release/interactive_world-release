@@ -1,3 +1,31 @@
+## interactive_world (indigo) - 0.0.11-0
+
+The packages in the `interactive_world` repository were released into the `indigo` distro by running `/usr/bin/bloom-release interactive_world --track indigo --rosdistro indigo` on `Fri, 19 Feb 2016 20:36:42 -0000`
+
+These packages were released:
+- `informed_object_search`
+- `interactive_world`
+- `interactive_world_msgs`
+- `interactive_world_parser`
+- `interactive_world_tools`
+- `jinteractiveworld`
+- `spatial_world_model`
+
+Version of package(s) in repository `interactive_world`:
+- upstream repository: https://github.com/WPI-RAIL/interactive_world.git
+- release repository: https://github.com/gt-rail-release/interactive_world-release.git
+- rosdistro version: `0.0.10-0`
+- old version: `0.0.10-0`
+- new version: `0.0.11-0`
+
+Versions of tools used:
+- bloom version: `0.5.20`
+- catkin_pkg version: `0.2.10`
+- rosdep version: `0.11.4`
+- rosdistro version: `0.4.2`
+- vcstools version: `0.1.38`
+
+
 ## interactive_world (indigo) - 0.0.10-0
 
 The packages in the `interactive_world` repository were released into the `indigo` distro by running `/usr/bin/bloom-release --rosdistro indigo --track indigo interactive_world` on `Fri, 10 Apr 2015 18:33:15 -0000`
