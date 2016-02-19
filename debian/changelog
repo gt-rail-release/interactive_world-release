@@ -1,0 +1,83 @@
+ros-indigo-interactive-world-msgs (0.0.11-0trusty) trusty; urgency=high
+
+  * Update package.xml
+  * small edits to server
+  * Contributors: David Kent, Russell Toris
+
+ -- Russell Toris <rctoris@wpi.edu>  Fri, 19 Feb 2016 05:00:00 -0000
+
+ros-indigo-interactive-world-msgs (0.0.10-0trusty) trusty; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Fri, 10 Apr 2015 04:00:00 -0000
+
+ros-indigo-interactive-world-msgs (0.0.9-0trusty) trusty; urgency=high
+
+  * temporal search added
+  * Contributors: Russell Toris
+
+ -- Russell Toris <rctoris@wpi.edu>  Fri, 10 Apr 2015 04:00:00 -0000
+
+ros-indigo-interactive-world-msgs (0.0.8-0trusty) trusty; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Fri, 03 Apr 2015 04:00:00 -0000
+
+ros-indigo-interactive-world-msgs (0.0.7-0trusty) trusty; urgency=high
+
+  * added tuck arm action
+  * Contributors: Russell Toris
+
+ -- Russell Toris <rctoris@wpi.edu>  Tue, 31 Mar 2015 04:00:00 -0000
+
+ros-indigo-interactive-world-msgs (0.0.6-0trusty) trusty; urgency=high
+
+  * higher level action server started
+  * Contributors: Russell Toris
+
+ -- Russell Toris <rctoris@wpi.edu>  Mon, 30 Mar 2015 04:00:00 -0000
+
+ros-indigo-interactive-world-msgs (0.0.5-0trusty) trusty; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Wed, 18 Feb 2015 05:00:00 -0000
+
+ros-indigo-interactive-world-msgs (0.0.4-0trusty) trusty; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Tue, 17 Feb 2015 05:00:00 -0000
+
+ros-indigo-interactive-world-msgs (0.0.3-0trusty) trusty; urgency=high
+
+  * spatial world model added
+  * Contributors: Russell Toris
+
+ -- Russell Toris <rctoris@wpi.edu>  Fri, 16 Jan 2015 05:00:00 -0000
+
+ros-indigo-interactive-world-msgs (0.0.2-0trusty) trusty; urgency=high
+
+  * study ID part of request
+  * Contributors: Russell Toris
+
+ -- Russell Toris <rctoris@wpi.edu>  Tue, 16 Dec 2014 05:00:00 -0000
+
+ros-indigo-interactive-world-msgs (0.0.1-0trusty) trusty; urgency=high
+
+  * travis fix
+  * changelog updated
+  * load models added
+  * connection made using JDBC
+  * removed old stuff
+  * data sent to jinteractiveworld
+  * parser builds msg files
+  * 0.2.0 jrosbridge used
+  * first pass of new parser
+  * Contributors: Russell Toris
+
+ -- Russell Toris <rctoris@wpi.edu>  Fri, 12 Dec 2014 05:00:00 -0000
+
+
