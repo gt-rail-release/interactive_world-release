@@ -1,0 +1,12 @@
+Source: ros-indigo-interactive-world-tools
+Section: misc
+Priority: extra
+Maintainer: Russell Toris <rctoris@wpi.edu>
+Build-Depends: debhelper (>= 9.0.0), curl, libboost-all-dev, libcurl4-openssl-dev, libjsoncpp-dev, libyaml-cpp-dev, pkg-config, ros-indigo-actionlib, ros-indigo-carl-dynamixel, ros-indigo-carl-moveit, ros-indigo-catkin, ros-indigo-geometry-msgs, ros-indigo-interactive-world-msgs, ros-indigo-move-base-msgs, ros-indigo-rail-manipulation-msgs, ros-indigo-roscpp, ros-indigo-roslib, ros-indigo-std-srvs, ros-indigo-tf2, ros-indigo-tf2-ros
+Homepage: http://ros.org/wiki/interactive_world_tools
+Standards-Version: 3.9.2
+
+Package: ros-indigo-interactive-world-tools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, curl, libboost-all-dev, libcurl4-openssl-dev, libjsoncpp-dev, libyaml-cpp-dev, ros-indigo-actionlib, ros-indigo-carl-dynamixel, ros-indigo-carl-moveit, ros-indigo-geometry-msgs, ros-indigo-interactive-world-msgs, ros-indigo-move-base-msgs, ros-indigo-rail-manipulation-msgs, ros-indigo-roscpp, ros-indigo-roslib, ros-indigo-std-srvs, ros-indigo-tf2, ros-indigo-tf2-ros
+Description: Tools and Modules for the Interactive World Models
